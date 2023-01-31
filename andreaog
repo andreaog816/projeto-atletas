@@ -1,0 +1,54 @@
+let atletas = [
+    {
+        nome: "Cesar Abascal",
+        notas: [10, 9.34, 8.42, 10, 7.88]
+    },
+    {
+        nome: "Fernando Puntel",
+        notas: [8, 10, 10, 7, 9.33]
+    },
+    {
+        nome: "Daiane Jelinsky",
+        notas: [7, 10, 9.5, 9.5, 8]
+    },
+    {
+        nome:"Bruno Castro",
+        notas: [10, 10, 10, 9, 9.5]
+    }
+];
+
+getScore(atletas);
+
+function getScore(atletasArray) {
+    for (let i = 0; i < atletasArray.length; i++) {
+        // Seteo de variables
+        let notasAtleta = Array.from(atletasArray[i].notas);
+        let numNotas = atletasArray[i].notas.length;
+        let total = 0;
+        let prom = 0;
+        
+        // Ordenamiento de notas de mayor a menor
+        notasAtleta.sort(function(a,b) {
+            return b - a;
+        });
+        
+        // Se elimina el primer elemento de las notas, la mayor nota
+        notasAtleta.shift();
+        
+        // Se elimina el último elemento de las notas, la menor nota
+        notasAtleta.pop();
+
+        // Se suman las notas y se obtiene el total
+        notasAtleta.map(function(nota) {
+            total += nota;
+        });
+
+        // Se promedian las notas
+        prom = total / notasAtleta.length;
+
+        // Se imprimen los datos
+        console.log('Atleta: ' + atletasArray[i].nome);
+        console.log('Notas Obtidas: ' + atletasArray[i].notas.toString());
+        console.log('Média Válida: ' + prom + '\n');
+    }
+}
